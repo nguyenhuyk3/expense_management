@@ -66,7 +66,7 @@ class _OnboardingSplashPageState extends State<OnboardingSplashPage>
   @override
   void dispose() {
     _fadeOut.dispose();
-    
+
     super.dispose();
   }
 
@@ -101,13 +101,10 @@ class _OnboardingSplashPageState extends State<OnboardingSplashPage>
               ),
             ),
 
-            Center(
-              child: OnboardingSplashBrand(phase: _phase),
-            ),
+            Center(child: OnboardingSplashBrand(phase: _phase)),
           ],
         ),
       ),
     );
   }
 }
-

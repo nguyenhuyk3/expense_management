@@ -42,6 +42,7 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
     if (!mounted) {
       return;
     }
+
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (_, __, ___) => const Scaffold(

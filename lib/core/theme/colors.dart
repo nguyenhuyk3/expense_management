@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 /// App color palette
 class AppColors {
-  // Brand
-  static const Color primary = Color(0xFFF5C518); // golden yellow
+  // Thương hiệu
+  static const Color primary = Color(0xFFF5C518); // vàng kim
   static const Color primaryDark = Color(
     0xFFD4A000,
-  ); // darker gold for pressed state
+  ); // màu vàng đậm hơn khi được nhấn
 
-  // Backgrounds
+  // Nền
   static const Color scaffoldBackground = Color(0xFF0E0E1A);
   static const Color cardBackground = Color(0xFF1A1A2E);
   static const Color chipBackground = Color(0xFF1E1E30);
 
-  // Text
+  // Chữ
   static const Color textPrimary = Color(0xFFFFFFFF);
   static const Color textSecondary = Color(0xFFAAAAAA);
   static const Color textHint = Color(0xFF666680);
@@ -22,7 +22,7 @@ class AppColors {
   static const Color inputBorder = Color(0xFFF5C518);
   static const Color inputBorderIdle = Color(0xFF3A3A5C);
 
-  // Status
+  // Trạng thái
   static const Color success = Color(0xFF4CAF50);
   static const Color error = Color(0xFFCF6679);
 

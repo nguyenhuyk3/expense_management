@@ -20,10 +20,13 @@ class OnboardingWelcomeContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           OnboardingWelcomeGreeting(name: name),
-          
+
           const SizedBox(height: Sizes.emojiMedium),
+
           const OnboardingSpinningRing(),
+
           const SizedBox(height: Sizes.hLarge),
+          
           const Text(
             'Đang vào ứng dụng...',
             style: TextStyle(
