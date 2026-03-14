@@ -123,7 +123,10 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
                 ],
               ),
               alignment: Alignment.center,
-              child: const Text('💰', style: TextStyle(fontSize: Sizes.emojiSmall)),
+              child: const Text(
+                '💰',
+                style: TextStyle(fontSize: Sizes.emojiSmall),
+              ),
             ),
           ],
         ),

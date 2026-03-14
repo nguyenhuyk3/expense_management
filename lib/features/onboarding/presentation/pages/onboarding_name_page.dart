@@ -58,7 +58,7 @@ class _OnboardingNamePageState extends State<OnboardingNamePage> {
       body: Stack(
         children: [
           const OnboardingNameStarField(),
-          
+
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -1,11 +1,8 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
-import '../../../../core/theme/sizes.dart';
 import '../widgets/onboarding_name_star_field.dart';
-import '../widgets/onboarding_welcome_greeting.dart';
+import '../widgets/onboarding_welcome_content.dart';
 
 /// Hiển thị sau khi người dùng nhập tên.
 /// Chào theo giờ hiện tại rồi tự động điều hướng về trang chủ.
@@ -32,19 +29,19 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
       vsync: this,
       duration: const Duration(milliseconds: 600),
     )..forward();
-
     _fade = CurvedAnimation(parent: _enter, curve: Curves.easeOut);
     _slide = Tween<Offset>(
       begin: const Offset(0, 0.08),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _enter, curve: Curves.easeOut));
-
     // TODO: thay Placeholder() bằng trang Home thực tế
     Future.delayed(const Duration(milliseconds: 2800), _navigateHome);
   }
 
   void _navigateHome() {
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (_, __, ___) => const Scaffold(
@@ -73,102 +70,17 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
       body: Stack(
         children: [
           const OnboardingNameStarField(),
+
           Center(
             child: FadeTransition(
               opacity: _fade,
               child: SlideTransition(
                 position: _slide,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: Sizes.wXLarge,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      OnboardingWelcomeGreeting(name: widget.name),
-
-                      const SizedBox(height: Sizes.emojiMedium),
-                      // Vòng xoay tải
-                      _SpinningRing(),
-
-                      const SizedBox(height: Sizes.hLarge),
-
-                      const Text(
-                        'Đang vào ứng dụng...',
-                        style: TextStyle(
-                          color: AppColors.textSecondary,
-                          fontSize: Sizes.textSmall,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: OnboardingWelcomeContent(name: widget.name),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _SpinningRing extends StatefulWidget {
-  @override
-  State<_SpinningRing> createState() => _SpinningRingState();
-}
-
-class _SpinningRingState extends State<_SpinningRing>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _c;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _c = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 900),
-    )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _c.dispose();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _c,
-      builder: (_, __) => Transform.rotate(
-        angle: _c.value * 2 * math.pi,
-        child: Container(
-          width: Sizes.spinnerSize,
-          height: Sizes.spinnerSize,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border(
-              top: BorderSide(
-                color: AppColors.primary,
-                width: Sizes.borderThick,
-              ),
-              right: BorderSide(
-                color: AppColors.inputBorderIdle,
-                width: Sizes.borderThick,
-              ),
-              bottom: BorderSide(
-                color: AppColors.inputBorderIdle,
-                width: Sizes.borderThick,
-              ),
-              left: BorderSide(
-                color: AppColors.inputBorderIdle,
-                width: Sizes.borderThick,
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }
