@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
 
-/// Time-based greeting card for the Onboarding Welcome page.
+/// Widget chào theo giờ trong ngày cho trang chào mừng Onboarding.
 class OnboardingWelcomeGreeting extends StatelessWidget {
   final String name;
 
@@ -10,8 +11,15 @@ class OnboardingWelcomeGreeting extends StatelessWidget {
 
   static ({String greeting, String emoji}) _resolveTime() {
     final hour = DateTime.now().hour;
-    if (hour < 12) return (greeting: 'Chào buổi sáng', emoji: '☀️');
-    if (hour < 18) return (greeting: 'Chào buổi chiều', emoji: '🌤️');
+
+    if (hour < 12) {
+      return (greeting: 'Chào buổi sáng', emoji: '☀️');
+    }
+
+    if (hour < 18) {
+      return (greeting: 'Chào buổi chiều', emoji: '🌤️');
+    }
+
     return (greeting: 'Chào buổi tối', emoji: '🌙');
   }
 
@@ -22,14 +30,16 @@ class OnboardingWelcomeGreeting extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(emoji, style: const TextStyle(fontSize: 72)),
+        Text(emoji, style: const TextStyle(fontSize: Sizes.emojiLarge)),
+
         const SizedBox(height: Sizes.hXLarge),
+
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
             style: const TextStyle(
               fontWeight: FontWeight.w900,
-              fontSize: Sizes.textXLarge + 4,
+              fontSize: Sizes.text2XLarge,
               height: 1.3,
             ),
             children: [
@@ -37,6 +47,7 @@ class OnboardingWelcomeGreeting extends StatelessWidget {
                 text: '$greeting,\n',
                 style: const TextStyle(color: AppColors.textPrimary),
               ),
+
               TextSpan(
                 text: '$name!',
                 style: const TextStyle(color: AppColors.primary),
@@ -44,7 +55,9 @@ class OnboardingWelcomeGreeting extends StatelessWidget {
             ],
           ),
         ),
+
         const SizedBox(height: Sizes.hLarge),
+
         const Text(
           'Chào mừng bạn đến với Spendly 🎉\nHãy cùng quản lý tài chính thật thông minh!',
           textAlign: TextAlign.center,

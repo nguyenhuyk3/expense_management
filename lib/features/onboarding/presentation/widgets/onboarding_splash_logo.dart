@@ -1,8 +1,11 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
-import '../../../../core/theme/colors.dart';
 
-/// Animated logo mark: icon container + spinning outer ring with dot.
+import 'package:flutter/material.dart';
+
+import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/sizes.dart';
+
+/// Widget logo: khối icon chứa emoji + vòng tròn xoay ngoài cùng với chấm orbit.
 class OnboardingSplashLogo extends StatefulWidget {
   const OnboardingSplashLogo({super.key});
 
@@ -49,12 +52,12 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
     return ScaleTransition(
       scale: _scale,
       child: SizedBox(
-        width: 108,
-        height: 108,
+        width: Sizes.containerLarge,
+        height: Sizes.containerLarge,
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // Spinning outer ring with orbiting dot
+            // Vòng tròn xoay ngoài cùng và chấm orbit
             AnimatedBuilder(
               animation: _spin,
               builder: (_, _) {
@@ -64,22 +67,22 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
                     alignment: Alignment.center,
                     children: [
                       Container(
-                        width: 108,
-                        height: 108,
+                        width: Sizes.containerLarge,
+                        height: Sizes.containerLarge,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
                             color: AppColors.primary.withValues(alpha: 0.25),
-                            width: 1.5,
+                            width: Sizes.borderThin,
                           ),
                         ),
                       ),
-                      // Orbiting dot at top
+                      // Chấm orbit phía trên
                       Positioned(
                         top: 0,
                         child: Container(
-                          width: 8,
-                          height: 8,
+                          width: Sizes.dotMedium,
+                          height: Sizes.dotMedium,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.primary,
@@ -97,12 +100,12 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
                 );
               },
             ),
-            // Icon container
+            // Khối chứa icon emoji
             Container(
-              width: 80,
-              height: 80,
+              width: Sizes.containerMedium,
+              height: Sizes.containerMedium,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(26),
+                borderRadius: BorderRadius.circular(Sizes.radiusLarge),
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -110,7 +113,7 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
                 ),
                 border: Border.all(
                   color: AppColors.primary.withValues(alpha: 0.4),
-                  width: 1.5,
+                  width: Sizes.borderThin,
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -120,7 +123,7 @@ class _OnboardingSplashLogoState extends State<OnboardingSplashLogo>
                 ],
               ),
               alignment: Alignment.center,
-              child: const Text('💰', style: TextStyle(fontSize: 36)),
+              child: const Text('💰', style: TextStyle(fontSize: Sizes.emojiSmall)),
             ),
           ],
         ),

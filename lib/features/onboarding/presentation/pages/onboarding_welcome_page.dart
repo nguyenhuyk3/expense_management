@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
@@ -5,8 +7,8 @@ import '../../../../core/theme/sizes.dart';
 import '../widgets/onboarding_name_star_field.dart';
 import '../widgets/onboarding_welcome_greeting.dart';
 
-/// Shown after the user submits their name.
-/// Displays a time-based greeting then auto-navigates to home.
+/// Hiển thị sau khi người dùng nhập tên.
+/// Chào theo giờ hiện tại rồi tự động điều hướng về trang chủ.
 class OnboardingWelcomePage extends StatefulWidget {
   final String name;
 
@@ -32,10 +34,12 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
     )..forward();
 
     _fade = CurvedAnimation(parent: _enter, curve: Curves.easeOut);
-    _slide = Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero)
-        .animate(CurvedAnimation(parent: _enter, curve: Curves.easeOut));
+    _slide = Tween<Offset>(
+      begin: const Offset(0, 0.08),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _enter, curve: Curves.easeOut));
 
-    // TODO: replace Placeholder() with actual Home page
+    // TODO: thay Placeholder() bằng trang Home thực tế
     Future.delayed(const Duration(milliseconds: 2800), _navigateHome);
   }
 
@@ -44,7 +48,9 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (_, __, ___) => const Scaffold(
-          body: Center(child: Text('Home', style: TextStyle(color: Colors.white))),
+          body: Center(
+            child: Text('Home', style: TextStyle(color: Colors.white)),
+          ),
         ),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
@@ -56,6 +62,7 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
   @override
   void dispose() {
     _enter.dispose();
+
     super.dispose();
   }
 
@@ -72,15 +79,20 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
               child: SlideTransition(
                 position: _slide,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: Sizes.wXLarge),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Sizes.wXLarge,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       OnboardingWelcomeGreeting(name: widget.name),
-                      const SizedBox(height: 52),
-                      // Spinning loader ring
+
+                      const SizedBox(height: Sizes.emojiMedium),
+                      // Vòng xoay tải
                       _SpinningRing(),
+
                       const SizedBox(height: Sizes.hLarge),
+
                       const Text(
                         'Đang vào ứng dụng...',
                         style: TextStyle(
@@ -112,6 +124,7 @@ class _SpinningRingState extends State<_SpinningRing>
   @override
   void initState() {
     super.initState();
+
     _c = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 900),
@@ -121,6 +134,7 @@ class _SpinningRingState extends State<_SpinningRing>
   @override
   void dispose() {
     _c.dispose();
+
     super.dispose();
   }
 
@@ -129,17 +143,29 @@ class _SpinningRingState extends State<_SpinningRing>
     return AnimatedBuilder(
       animation: _c,
       builder: (_, __) => Transform.rotate(
-        angle: _c.value * 2 * 3.14159,
+        angle: _c.value * 2 * math.pi,
         child: Container(
-          width: 48,
-          height: 48,
+          width: Sizes.spinnerSize,
+          height: Sizes.spinnerSize,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border(
-              top: BorderSide(color: AppColors.primary, width: 3),
-              right: BorderSide(color: AppColors.inputBorderIdle, width: 3),
-              bottom: BorderSide(color: AppColors.inputBorderIdle, width: 3),
-              left: BorderSide(color: AppColors.inputBorderIdle, width: 3),
+              top: BorderSide(
+                color: AppColors.primary,
+                width: Sizes.borderThick,
+              ),
+              right: BorderSide(
+                color: AppColors.inputBorderIdle,
+                width: Sizes.borderThick,
+              ),
+              bottom: BorderSide(
+                color: AppColors.inputBorderIdle,
+                width: Sizes.borderThick,
+              ),
+              left: BorderSide(
+                color: AppColors.inputBorderIdle,
+                width: Sizes.borderThick,
+              ),
             ),
           ),
         ),

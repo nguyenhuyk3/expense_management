@@ -29,10 +29,17 @@ class _OnboardingNamePageState extends State<OnboardingNamePage> {
   }
 
   Future<void> _onConfirm() async {
-    if (_name.isEmpty) return;
+    if (_name.isEmpty) {
+      return;
+    }
+
     final name = _name;
     await UserLocalService.saveName(name);
-    if (!mounted) return;
+
+    if (!mounted) {
+      return;
+    }
+
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (_, __, ___) => OnboardingWelcomePage(name: name),
@@ -51,33 +58,38 @@ class _OnboardingNamePageState extends State<OnboardingNamePage> {
       body: Stack(
         children: [
           const OnboardingNameStarField(),
+          
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: Sizes.wXLarge),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Sizes.wXLarge,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const SizedBox(height: Sizes.hXLarge),
+
                         const OnboardingNameHeader(),
+
                         const SizedBox(height: Sizes.hXLarge),
+
                         OnboardingNameTextField(
                           controller: _controller,
                           maxLength: _maxLength,
                           onChanged: (_) => setState(() {}),
                         ),
+
                         const SizedBox(height: Sizes.hXLarge),
                       ],
                     ),
                   ),
                 ),
-                OnboardingNameConfirmButton(
-                  name: _name,
-                  onConfirm: _onConfirm,
-                ),
+
+                OnboardingNameConfirmButton(name: _name, onConfirm: _onConfirm),
               ],
             ),
           ),

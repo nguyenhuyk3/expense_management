@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 /// App color palette
 class AppColors {
   // Brand
-  static const Color primary = Color(0xFFF5C518);      // golden yellow
-  static const Color primaryDark = Color(0xFFD4A000);  // darker gold for pressed state
+  static const Color primary = Color(0xFFF5C518); // golden yellow
+  static const Color primaryDark = Color(
+    0xFFD4A000,
+  ); // darker gold for pressed state
 
   // Backgrounds
   static const Color scaffoldBackground = Color(0xFF0E0E1A);
@@ -23,4 +25,7 @@ class AppColors {
   // Status
   static const Color success = Color(0xFF4CAF50);
   static const Color error = Color(0xFFCF6679);
+
+  // Màu chữ đặc biệt
+  static const Color textAppName = Color(0xFFE8EAFF);
 }

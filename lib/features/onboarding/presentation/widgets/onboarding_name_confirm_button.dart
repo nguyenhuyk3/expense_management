@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
 
-/// Animated confirm button pinned at the bottom of the Onboarding Name page.
+/// Nút xác nhận có hiệu ứng, ghim ở cuối trang nhập tên Onboarding.
 class OnboardingNameConfirmButton extends StatelessWidget {
   final String name;
   final VoidCallback onConfirm;
@@ -79,7 +79,7 @@ class OnboardingNameConfirmButton extends StatelessWidget {
                     ),
 
                     const SizedBox(width: Sizes.wSmall),
-                    
+
                     const Text(
                       '→',
                       style: TextStyle(

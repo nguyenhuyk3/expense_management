@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
 
-/// Text input card for entering name on the Onboarding Name page.
+/// Khung nhập tên trên trang nhập tên Onboarding.
 class OnboardingNameTextField extends StatelessWidget {
   final TextEditingController controller;
   final int maxLength;
@@ -22,7 +22,10 @@ class OnboardingNameTextField extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(Sizes.hMedium),
-        border: Border.all(color: AppColors.inputBorder, width: 1.5),
+        border: Border.all(
+          color: AppColors.inputBorder,
+          width: Sizes.borderThin,
+        ),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: Sizes.wLarge,
@@ -72,11 +75,8 @@ class OnboardingNameTextField extends StatelessWidget {
               ),
             ],
           ),
-          
-          Container(
-            height: 1.5,
-            color: AppColors.inputBorder,
-          ),
+
+          Container(height: Sizes.borderThin, color: AppColors.inputBorder),
         ],
       ),
     );

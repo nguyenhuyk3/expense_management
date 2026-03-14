@@ -7,8 +7,8 @@ import '../widgets/onboarding_splash_dots.dart';
 import '../widgets/onboarding_splash_logo.dart';
 import 'onboarding_name_page.dart';
 
-/// First screen shown when the user has never set up a profile.
-/// Animates in the branding then navigates to [OnboardingNamePage].
+/// Màn hình đầu tiên hiển thị khi người dùng chưa thiết lập hồ sơ.
+/// Hiệu ứng xuất hiện thương hiệu rồi điều hướng sang [OnboardingNamePage].
 class OnboardingSplashPage extends StatefulWidget {
   const OnboardingSplashPage({super.key});
 
@@ -18,7 +18,7 @@ class OnboardingSplashPage extends StatefulWidget {
 
 class _OnboardingSplashPageState extends State<OnboardingSplashPage>
     with SingleTickerProviderStateMixin {
-  // Phase 0 → logo only; 1 → tagline + dots; 2 → fade out
+  // Phase 0 → chỉ logo; 1 → tagline + chấm nhảy; 2 → mờ dần
   int _phase = 0;
 
   late final AnimationController _fadeOut;
@@ -82,13 +82,13 @@ class _OnboardingSplashPageState extends State<OnboardingSplashPage>
         child: Stack(
           children: [
             const OnboardingNameStarField(),
-            // Radial glow – top right
+            // Ánh sáng hào quang radial – góc trên bên phải
             Positioned(
               top: -60,
               right: -60,
               child: Container(
-                width: 260,
-                height: 260,
+                width: Sizes.decorationSize,
+                height: Sizes.decorationSize,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
@@ -109,21 +109,19 @@ class _OnboardingSplashPageState extends State<OnboardingSplashPage>
                   const OnboardingSplashLogo(),
 
                   const SizedBox(height: Sizes.hXLarge),
-
-                  // ── App name ──────────────────────────────
+                  // ── Tên ứng dụng ──────────────────────────────
                   _FadeUpText(
                     delay: const Duration(milliseconds: 150),
                     child: const Text(
                       'Spendly',
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
-                        fontSize: 32,
-                        color: Color(0xFFE8EAFF),
+                        fontSize: Sizes.text3XLarge,
+                        color: AppColors.textAppName,
                         letterSpacing: -1,
                       ),
                     ),
                   ),
-
                   // ── Tagline ───────────────────────────────
                   AnimatedOpacity(
                     opacity: _phase >= 1 ? 1.0 : 0.0,
@@ -169,7 +167,7 @@ class _OnboardingSplashPageState extends State<OnboardingSplashPage>
   }
 }
 
-/// Simple fade-up entrance animation widget.
+/// Widget hiệu ứng trượt lên và mờ dần khi xuất hiện.
 class _FadeUpText extends StatefulWidget {
   final Widget child;
   final Duration delay;

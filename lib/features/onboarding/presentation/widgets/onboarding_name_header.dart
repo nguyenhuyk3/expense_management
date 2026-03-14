@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
 
-/// Emoji + title + subtitle for the Onboarding Name page.
+/// Emoji + tiêu đề + phụ đề cho trang nhập tên Onboarding.
 class OnboardingNameHeader extends StatelessWidget {
   const OnboardingNameHeader({super.key});
 
@@ -15,16 +15,16 @@ class OnboardingNameHeader extends StatelessWidget {
         const Text(
           '👋',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 52),
+          style: TextStyle(fontSize: Sizes.emojiMedium),
         ),
 
         const SizedBox(height: Sizes.hLarge),
-        
+
         RichText(
           textAlign: TextAlign.center,
           text: const TextSpan(
             style: TextStyle(
-              fontSize: Sizes.textXLarge + 8,
+              fontSize: Sizes.text3XLarge,
               fontWeight: FontWeight.w900,
               height: 1.2,
             ),
@@ -42,7 +42,7 @@ class OnboardingNameHeader extends StatelessWidget {
         ),
 
         const SizedBox(height: Sizes.hLarge),
-        
+
         const Text(
           'Nhập tên hoặc biệt danh của bạn.\nChúng tôi sẽ dùng tên này để chào hỏi bạn.',
           textAlign: TextAlign.center,

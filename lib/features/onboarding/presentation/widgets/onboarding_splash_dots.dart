@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/sizes.dart';
 
-/// Three bouncing dots loader for the Onboarding Splash page.
+/// Ba chấm nhảy bounce dùng cho màn hình Splash của Onboarding.
 class OnboardingSplashDots extends StatefulWidget {
   const OnboardingSplashDots({super.key});
 
@@ -49,7 +50,7 @@ class _OnboardingSplashDotsState extends State<OnboardingSplashDots>
     for (final c in _controllers) {
       c.dispose();
     }
-    
+
     super.dispose();
   }
 
@@ -65,8 +66,8 @@ class _OnboardingSplashDotsState extends State<OnboardingSplashDots>
             child: ScaleTransition(
               scale: _anims[i].drive(Tween<double>(begin: 1.0, end: 0.6)),
               child: Container(
-                width: 6,
-                height: 6,
+                width: Sizes.dotSmall,
+                height: Sizes.dotSmall,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.primary,
