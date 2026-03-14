@@ -2,13 +2,25 @@ import 'package:flutter/material.dart';
 
 /// App color palette
 class AppColors {
-  static const Color primary = Color(0xFF0A84FF);
-  static const Color accent = Color(0xFFFFC107);
-  static const Color background = Color(0xFFF7F7F7);
-  static const Color scaffoldBackground = Colors.white;
-  static const Color textPrimary = Color(0xFF222222);
-  static const Color textSecondary = Color(0xFF666666);
+  // Brand
+  static const Color primary = Color(0xFFF5C518);      // golden yellow
+  static const Color primaryDark = Color(0xFFD4A000);  // darker gold for pressed state
+
+  // Backgrounds
+  static const Color scaffoldBackground = Color(0xFF0E0E1A);
+  static const Color cardBackground = Color(0xFF1A1A2E);
+  static const Color chipBackground = Color(0xFF1E1E30);
+
+  // Text
+  static const Color textPrimary = Color(0xFFFFFFFF);
+  static const Color textSecondary = Color(0xFFAAAAAA);
+  static const Color textHint = Color(0xFF666680);
+
+  // Input
+  static const Color inputBorder = Color(0xFFF5C518);
+  static const Color inputBorderIdle = Color(0xFF3A3A5C);
+
+  // Status
   static const Color success = Color(0xFF4CAF50);
-  static const Color error = Color(0xFFB00020);
-  static const Color border = Color(0xFFE0E0E0);
+  static const Color error = Color(0xFFCF6679);
 }
