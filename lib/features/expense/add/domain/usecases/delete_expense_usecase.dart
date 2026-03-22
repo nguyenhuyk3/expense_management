@@ -8,7 +8,7 @@ import '../repositories/expense_repository.dart';
 class DeleteExpenseUseCase extends UseCase<void, DeleteExpenseParams> {
   final ExpenseRepository repository;
 
-  DeleteExpenseUseCase(this.repository);
+  DeleteExpenseUseCase({required this.repository});
 
   @override
   Future<Either<Failure, void>> call(DeleteExpenseParams params) {

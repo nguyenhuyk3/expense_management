@@ -7,7 +7,8 @@ import '../repositories/expense_repository.dart';
 
 class GetExpensesUseCase extends UseCase<List<ExpenseDetailEntity>, NoParams> {
   final ExpenseRepository repository;
-  GetExpensesUseCase(this.repository);
+
+  GetExpensesUseCase({required this.repository});
 
   @override
   Future<Either<Failure, List<ExpenseDetailEntity>>> call(NoParams params) {

@@ -10,7 +10,7 @@ import '../repositories/expense_repository.dart';
 class AddExpenseUseCase extends UseCase<void, AddExpenseParams> {
   final ExpenseRepository repository;
 
-  AddExpenseUseCase(this.repository);
+  AddExpenseUseCase({required this.repository});
 
   @override
   Future<Either<Failure, void>> call(AddExpenseParams params) {

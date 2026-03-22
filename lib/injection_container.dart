@@ -24,9 +24,9 @@ Future<void> initDependencies() async {
   );
 
   // ── Use Cases ─────────────────────────────────────────────────────────────
-  sl.registerLazySingleton(() => AddExpenseUseCase(sl()));
-  sl.registerLazySingleton(() => GetExpensesUseCase(sl()));
-  sl.registerLazySingleton(() => DeleteExpenseUseCase(sl()));
+  sl.registerLazySingleton(() => AddExpenseUseCase(repository: sl()));
+  sl.registerLazySingleton(() => GetExpensesUseCase(repository: sl()));
+  sl.registerLazySingleton(() => DeleteExpenseUseCase(repository: sl()));
 
   // ── Bloc (factory = new instance per route) ───────────────────────────────
   sl.registerFactory(
