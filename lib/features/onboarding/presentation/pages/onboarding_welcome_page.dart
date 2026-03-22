@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
 import '../../../expense/add/presentation/pages/add_expense_page.dart';
-import '../widgets/onboarding_name_star_field.dart';
-import '../widgets/onboarding_welcome_content.dart';
+import '../widgets/index.dart';
 
 /// Hiển thị sau khi người dùng nhập tên
 /// Chào theo giờ hiện tại rồi tự động điều hướng về trang chủ

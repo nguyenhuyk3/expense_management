@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/services/user_local_service.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
-import '../widgets/onboarding_name_confirm_button.dart';
-import '../widgets/onboarding_name_header.dart';
-import '../widgets/onboarding_name_star_field.dart';
-import '../widgets/onboarding_name_text_field.dart';
+import '../widgets/index.dart';
 import 'onboarding_welcome_page.dart';
 
 class OnboardingNamePage extends StatefulWidget {

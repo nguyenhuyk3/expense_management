@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
 import '../../../../core/theme/sizes.dart';
-import '../widgets/onboarding_name_star_field.dart';
-import '../widgets/onboarding_splash_brand.dart';
+import '../widgets/index.dart';
 import 'onboarding_name_page.dart';
 
 /// Màn hình đầu tiên hiển thị khi người dùng chưa thiết lập hồ sơ
