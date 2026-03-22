@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+
 import '../../../../../core/error/failure.dart';
 import '../../domain/entities/expense_detail_entity.dart';
 import '../../domain/entities/expense_entity.dart';
@@ -20,9 +21,10 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
       await datasource.saveExpense(
         ExpenseModel.fromEntities(expense: expense, detail: detail),
       );
+
       return const Right(null);
     } catch (e) {
-      return Left(CacheFailure(e.toString()));
+      return Left(CacheFailure(message: e.toString()));
     }
   }
 
@@ -30,9 +32,10 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<Either<Failure, List<ExpenseDetailEntity>>> getExpenses() async {
     try {
       final models = await datasource.getExpenses();
+
       return Right(models.map((m) => m.detail).toList());
     } catch (e) {
-      return Left(CacheFailure(e.toString()));
+      return Left(CacheFailure(message: e.toString()));
     }
   }
 
@@ -40,9 +43,10 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<Either<Failure, void>> deleteExpense(String id) async {
     try {
       await datasource.deleteExpense(id);
+
       return const Right(null);
     } catch (e) {
-      return Left(CacheFailure(e.toString()));
+      return Left(CacheFailure(message: e.toString()));
     }
   }
 }
