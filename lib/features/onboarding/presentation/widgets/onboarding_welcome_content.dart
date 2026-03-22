@@ -5,8 +5,8 @@ import '../../../../core/theme/sizes.dart';
 import 'onboarding_spinning_ring.dart';
 import 'onboarding_welcome_greeting.dart';
 
-/// Nội dung trung tâm của màn hình chào mừng:
-/// lời chào theo giờ, spinner tải và chú thích.
+/// Nội dung trung tâm của màn hình chào mừng
+/// lời chào theo giờ, spinner tải và chú thích
 class OnboardingWelcomeContent extends StatelessWidget {
   final String name;
 
@@ -26,7 +26,7 @@ class OnboardingWelcomeContent extends StatelessWidget {
           const OnboardingSpinningRing(),
 
           const SizedBox(height: Sizes.hLarge),
-          
+
           const Text(
             'Đang vào ứng dụng...',
             style: TextStyle(

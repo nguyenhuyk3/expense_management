@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/services/user_local_service.dart';
 import 'core/theme/colors.dart';
 import 'features/onboarding/presentation/pages/onboarding_splash_page.dart';
+import 'injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,7 @@ void main() async {
   // Initialise Hive (uses app documents dir on all platforms)
   await Hive.initFlutter();
   await UserLocalService.init();
+  await initDependencies();
 
   // Lock to portrait
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

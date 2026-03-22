@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';
+import '../../../expense/add/presentation/pages/add_expense_page.dart';
 import '../widgets/onboarding_name_star_field.dart';
 import '../widgets/onboarding_welcome_content.dart';
 
-/// Hiển thị sau khi người dùng nhập tên.
-/// Chào theo giờ hiện tại rồi tự động điều hướng về trang chủ.
+/// Hiển thị sau khi người dùng nhập tên
+/// Chào theo giờ hiện tại rồi tự động điều hướng về trang chủ
 class OnboardingWelcomePage extends StatefulWidget {
   final String name;
 
@@ -45,11 +46,7 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
 
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const Scaffold(
-          body: Center(
-            child: Text('Home', style: TextStyle(color: Colors.white)),
-          ),
-        ),
+        pageBuilder: (_, __, ___) => const AddExpensePage(),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
         transitionDuration: const Duration(milliseconds: 500),

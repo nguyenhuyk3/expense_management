@@ -1,6 +1,6 @@
 class Sizes {
-  // Tiêu đề
   static const double headerHeight = 56.0;
+  static const double categoryHeight = 56.0;
 
   // Kích thước chữ
   static const double textSmall = 12.0;
@@ -48,6 +48,8 @@ class Sizes {
   static const double containerLarge = 108.0;
   static const double spinnerSize = 48.0;
   static const double decorationSize = 260.0;
+
+  static const double sheetHandleWidth = 36.0;
 
   // Bo góc
   static const double radiusLarge = 26.0;

@@ -2,3 +2,4 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     unnecessary_underscores: ignore
+    deprecated_member_use: ignore

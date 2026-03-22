@@ -6,8 +6,8 @@ import '../widgets/onboarding_name_star_field.dart';
 import '../widgets/onboarding_splash_brand.dart';
 import 'onboarding_name_page.dart';
 
-/// Màn hình đầu tiên hiển thị khi người dùng chưa thiết lập hồ sơ.
-/// Hiệu ứng xuất hiện thương hiệu rồi điều hướng sang [OnboardingNamePage].
+/// Màn hình đầu tiên hiển thị khi người dùng chưa thiết lập hồ sơ
+/// Hiệu ứng xuất hiện thương hiệu rồi điều hướng sang [OnboardingNamePage]
 class OnboardingSplashPage extends StatefulWidget {
   const OnboardingSplashPage({super.key});
 
