@@ -14,10 +14,16 @@ void main() {
     final s1 = const AddExpenseState(amountRaw: '0', selectedCategoryId: null);
     expect(s1.canAdd, isFalse);
 
-    final s2 = const AddExpenseState(amountRaw: '100', selectedCategoryId: null);
+    final s2 = const AddExpenseState(
+      amountRaw: '100',
+      selectedCategoryId: null,
+    );
     expect(s2.canAdd, isFalse);
 
-    final s3 = const AddExpenseState(amountRaw: '100', selectedCategoryId: 'cat');
+    final s3 = const AddExpenseState(
+      amountRaw: '100',
+      selectedCategoryId: 'cat',
+    );
     expect(s3.canAdd, isTrue);
   });
 

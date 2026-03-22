@@ -46,50 +46,51 @@ void main() {
 
   group('AddExpenseBloc Tests', () {
     test('Initial state is correct', () {
-        expect(addExpenseBloc.state, const AddExpenseState());
+      expect(addExpenseBloc.state, const AddExpenseState());
     });
 
     group('Input Events', () {
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Gửi amountRaw được cập nhật khi thêm sự kiện AmountKeyPressed',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Gửi amountRaw được cập nhật khi thêm sự kiện AmountKeyPressed',
         build: () => addExpenseBloc,
         act: (bloc) => bloc.add(const AmountKeyPressed(key: '5')),
         expect: () => [const AddExpenseState(amountRaw: '5')],
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Xử lý phím xóa đúng trong amountRaw',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Xử lý phím xóa đúng trong amountRaw',
         build: () => addExpenseBloc,
         seed: () => const AddExpenseState(amountRaw: '123'),
         act: (bloc) => bloc.add(const AmountKeyPressed(key: '⌫')),
         expect: () => [const AddExpenseState(amountRaw: '12')],
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Gửi selectedCategoryId khi chọn danh mục',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Gửi selectedCategoryId khi chọn danh mục',
         build: () => addExpenseBloc,
         act: (bloc) => bloc.add(const CategorySelected(categoryId: 'cat_1')),
         expect: () => [const AddExpenseState(selectedCategoryId: 'cat_1')],
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Cập nhật phương thức thanh toán khi PaymentMethodSelected',
-          build: () => addExpenseBloc,
-          act: (bloc) => bloc.add(const PaymentMethodSelected(paymentMethod: 'card')),
-          expect: () => [const AddExpenseState(paymentMethod: 'card')],
-        );
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Cập nhật phương thức thanh toán khi PaymentMethodSelected',
+        build: () => addExpenseBloc,
+        act: (bloc) =>
+            bloc.add(const PaymentMethodSelected(paymentMethod: 'card')),
+        expect: () => [const AddExpenseState(paymentMethod: 'card')],
+      );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Cập nhật note khi NoteChanged',
-          build: () => addExpenseBloc,
-          act: (bloc) => bloc.add(const NoteChanged(note: 'Ghi chú thử')),
-          expect: () => [const AddExpenseState(note: 'Ghi chú thử')],
-        );
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Cập nhật note khi NoteChanged',
+        build: () => addExpenseBloc,
+        act: (bloc) => bloc.add(const NoteChanged(note: 'Ghi chú thử')),
+        expect: () => [const AddExpenseState(note: 'Ghi chú thử')],
+      );
     });
 
     group('Expense Session Logic', () {
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Thêm entry vào sessionEntries và xóa input khi ExpenseAdded',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Thêm entry vào sessionEntries và xóa input khi ExpenseAdded',
         build: () => addExpenseBloc,
         seed: () => const AddExpenseState(
           amountRaw: '50000',
@@ -127,15 +128,17 @@ void main() {
           note: 'updated',
         ),
         act: (bloc) => bloc.add(const ExpenseAdded()),
-        expect: () => [predicate<AddExpenseState>((s) {
-          return s.sessionEntries.length == 1 &&
-              s.sessionEntries.first.id == 'e1' &&
-              s.sessionEntries.first.amount == 250 &&
-              s.sessionEntries.first.categoryId == 'cat_edit' &&
-              s.amountRaw == '' &&
-              s.note == '' &&
-              s.editingEntryId == null;
-        })],
+        expect: () => [
+          predicate<AddExpenseState>((s) {
+            return s.sessionEntries.length == 1 &&
+                s.sessionEntries.first.id == 'e1' &&
+                s.sessionEntries.first.amount == 250 &&
+                s.sessionEntries.first.categoryId == 'cat_edit' &&
+                s.amountRaw == '' &&
+                s.note == '' &&
+                s.editingEntryId == null;
+          }),
+        ],
       );
 
       blocTest<AddExpenseBloc, AddExpenseState>(
@@ -143,12 +146,30 @@ void main() {
         build: () => addExpenseBloc,
         seed: () => AddExpenseState(
           sessionEntries: [
-            const ExpenseEntry(id: 'a', amount: 1, categoryId: 'c1', paymentMethod: 'cash', note: ''),
-            const ExpenseEntry(id: 'b', amount: 2, categoryId: 'c2', paymentMethod: 'cash', note: ''),
+            const ExpenseEntry(
+              id: 'a',
+              amount: 1,
+              categoryId: 'c1',
+              paymentMethod: 'cash',
+              note: '',
+            ),
+            const ExpenseEntry(
+              id: 'b',
+              amount: 2,
+              categoryId: 'c2',
+              paymentMethod: 'cash',
+              note: '',
+            ),
           ],
         ),
         act: (bloc) => bloc.add(const ExpenseRemoved(id: 'a')),
-        expect: () => [predicate<AddExpenseState>((s) => s.sessionEntries.length == 1 && s.sessionEntries.first.id == 'b')],
+        expect: () => [
+          predicate<AddExpenseState>(
+            (s) =>
+                s.sessionEntries.length == 1 &&
+                s.sessionEntries.first.id == 'b',
+          ),
+        ],
       );
 
       blocTest<AddExpenseBloc, AddExpenseState>(
@@ -160,7 +181,9 @@ void main() {
           note: 'a',
         ),
         act: (bloc) => bloc.add(const ExpenseEditCancelled()),
-        expect: () => [const AddExpenseState(editingEntryId: null, amountRaw: '', note: '')],
+        expect: () => [
+          const AddExpenseState(editingEntryId: null, amountRaw: '', note: ''),
+        ],
       );
 
       blocTest<AddExpenseBloc, AddExpenseState>(
@@ -171,8 +194,8 @@ void main() {
         expect: () => [],
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Bắt đầu chỉnh sửa và điền dữ liệu khi ExpenseEditStarted',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Bắt đầu chỉnh sửa và điền dữ liệu khi ExpenseEditStarted',
         build: () => addExpenseBloc,
         seed: () => const AddExpenseState(
           sessionEntries: [
@@ -216,8 +239,8 @@ void main() {
         note: 'Coffee',
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Phát [loading, success] khi lưu tất cả thành công',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Phát [loading, success] khi lưu tất cả thành công',
         build: () => addExpenseBloc,
         seed: () => AddExpenseState(sessionEntries: [entry]),
         setUp: () {
@@ -248,8 +271,8 @@ void main() {
         ), // Cần thiết vì bạn có await Future.delayed
       );
 
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Phát [loading, failure] khi usecase trả về lỗi',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Phát [loading, failure] khi usecase trả về lỗi',
         build: () => addExpenseBloc,
         seed: () => AddExpenseState(sessionEntries: [entry]),
         setUp: () {
@@ -275,8 +298,8 @@ void main() {
 
     group('Date logic', () {
       final testDate = DateTime(2023, 12, 25);
-        blocTest<AddExpenseBloc, AddExpenseState>(
-          'Cập nhật selectedDate khi thêm DateSelected',
+      blocTest<AddExpenseBloc, AddExpenseState>(
+        'Cập nhật selectedDate khi thêm DateSelected',
         build: () => addExpenseBloc,
         act: (bloc) => bloc.add(DateSelected(date: testDate)),
         expect: () => [AddExpenseState(selectedDate: testDate)],
