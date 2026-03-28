@@ -28,4 +28,8 @@ class AppColors {
 
   // Màu chữ đặc biệt
   static const Color textAppName = Color(0xFFE8EAFF);
+  // Surface màu tối cho numpad, panel
+  static const Color surface = Color(0xFF161929);
+  // Border tinh tế cho card, panel
+  static const Color borderSubtle = Color(0xFF252A45);
 }

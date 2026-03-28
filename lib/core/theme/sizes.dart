@@ -53,4 +53,15 @@ class Sizes {
 
   // Bo góc
   static const double radiusLarge = 26.0;
+  static const double radiusCard = 24.0;
+  static const double radiusButton = 20.0;
+  static const double radiusInput = 16.0;
+  static const double radiusMedium = 12.0;
+  static const double radiusSmall = 8.0;
+
+  // Numpad & button heights
+  static const double numpadKeyHeight = 56.0;
+  static const double buttonHeight = 54.0;
+  static const double progressBarHeight = 3.0;
+  static const double cursorWidth = 3.0;
 }

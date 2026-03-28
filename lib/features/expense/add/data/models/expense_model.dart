@@ -17,6 +17,8 @@ class ExpenseModel extends ExpenseEntity {
   const ExpenseModel({
     required super.id,
     required super.createdAt,
+    // Optional: kế thừa từ ExpenseEntity, nullable khi không có thu nhập tháng tương ứng.
+    super.monthlyIncomeId,
     required this.amount,
     required this.categoryId,
     required this.paymentMethod,
@@ -31,6 +33,7 @@ class ExpenseModel extends ExpenseEntity {
   }) => ExpenseModel(
     id: entity.id,
     createdAt: entity.createdAt,
+    monthlyIncomeId: entity.monthlyIncomeId,
     amount: detail.amount,
     categoryId: detail.categoryId,
     paymentMethod: detail.paymentMethod,

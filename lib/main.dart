@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'core/presentation/pages/main_shell.dart';
 import 'core/services/user_local_service.dart';
 import 'core/theme/colors.dart';
 import 'features/onboarding/presentation/pages/onboarding_splash_page.dart';
@@ -9,12 +11,10 @@ import 'injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   // Initialise Hive (uses app documents dir on all platforms)
   await Hive.initFlutter();
   await UserLocalService.init();
   await initDependencies();
-
   // Lock to portrait
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
@@ -25,6 +25,7 @@ void main() async {
 
 class MainApp extends StatelessWidget {
   final bool hasUser;
+
   const MainApp({super.key, required this.hasUser});
 
   @override
@@ -40,8 +41,8 @@ class MainApp extends StatelessWidget {
         ),
         fontFamily: 'sans-serif',
       ),
-      // If user already exists → go to home (placeholder); else → splash → onboarding
-      home: const OnboardingSplashPage(),
+      // Nếu đã có user → vào thẳng MainShell, ngược lại → onboarding
+      home: hasUser ? const MainShell() : const OnboardingSplashPage(),
     );
   }
 }

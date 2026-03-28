@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/presentation/pages/main_shell.dart';
 import '../../../../core/theme/colors.dart';
-import '../../../expense/add/presentation/pages/add_expense_page.dart';
 import '../widgets/index.dart';
 
 /// Hiển thị sau khi người dùng nhập tên
@@ -34,7 +34,6 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
       begin: const Offset(0, 0.08),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _enter, curve: Curves.easeOut));
-    // TODO: thay Placeholder() bằng trang Home thực tế
     Future.delayed(const Duration(milliseconds: 2800), _navigateHome);
   }
 
@@ -45,7 +44,7 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage>
 
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const AddExpensePage(),
+        pageBuilder: (_, __, ___) => const MainShell(),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
         transitionDuration: const Duration(milliseconds: 500),

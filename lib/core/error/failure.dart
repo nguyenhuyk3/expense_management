@@ -27,3 +27,11 @@ class ReadExpenseFailure extends Failure {
 class DeleteExpenseFailure extends Failure {
   const DeleteExpenseFailure({required super.message});
 }
+
+class SaveIncomeFailure extends Failure {
+  const SaveIncomeFailure({required super.message});
+}
+
+class ReadIncomeFailure extends Failure {
+  const ReadIncomeFailure({required super.message});
+}

@@ -7,8 +7,17 @@ class ExpenseEntity extends Equatable {
   final String id;
   final DateTime createdAt;
 
-  const ExpenseEntity({required this.id, required this.createdAt});
+  /// Id của [MonthlyIncomeEntity] tương ứng với tháng của [createdAt].
+  /// Nullable vì có thể không tồn tại dữ liệu thu nhập cho tháng đó.
+  final String? monthlyIncomeId;
+
+  const ExpenseEntity({
+    required this.id,
+    required this.createdAt,
+    // Optional: không phải lúc nào cũng có thu nhập được ghi nhận cho tháng tương ứng.
+    this.monthlyIncomeId,
+  });
 
   @override
-  List<Object?> get props => [id, createdAt];
+  List<Object?> get props => [id, createdAt, monthlyIncomeId];
 }
