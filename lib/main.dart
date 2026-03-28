@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -33,6 +34,13 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Management',
       debugShowCheckedModeBanner: false,
+      locale: const Locale('vi'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('vi'), Locale('en')],
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.scaffoldBackground,
         colorScheme: const ColorScheme.dark(

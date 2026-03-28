@@ -34,7 +34,7 @@ class AddExpenseDatePicker extends StatelessWidget {
               color: isToday
                   ? AppColors.cardBackground
                   : AppColors.primary.withOpacity(0.07),
-              borderRadius: BorderRadius.circular(Sizes.hLarge - 12),
+              borderRadius: BorderRadius.circular(Sizes.hLarge),
               border: Border.all(
                 color: isToday
                     ? AppColors.inputBorderIdle
