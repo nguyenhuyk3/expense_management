@@ -10,5 +10,5 @@ abstract class ExpenseRepository {
     required ExpenseDetailEntity detail,
   });
   Future<Either<Failure, List<ExpenseDetailEntity>>> getExpenses();
-  Future<Either<Failure, void>> deleteExpense(String id);
+  Future<Either<Failure, void>> deleteExpense({required String id});
 }

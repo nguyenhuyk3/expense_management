@@ -12,7 +12,7 @@ class DeleteExpenseUseCase extends UseCase<void, DeleteExpenseParams> {
 
   @override
   Future<Either<Failure, void>> call(DeleteExpenseParams params) {
-    return repository.deleteExpense(params.id);
+    return repository.deleteExpense(id: params.id);
   }
 }
 
